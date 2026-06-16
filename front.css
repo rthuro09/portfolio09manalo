@@ -1,0 +1,362 @@
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --bg-dark: #0f172a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
+
+.font-space {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Reading Progress Bar */
+.progress-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.1);
+}
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), #6f42c1);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Aurora Background Animation */
+.aurora-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at 15% 50%, rgba(13, 110, 253, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(111, 66, 193, 0.15), transparent 25%);
+    filter: blur(60px);
+    animation: aurora 15s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Glassmorphism */
+.glass-nav, .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+}
+.glass-nav {
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+.glass-nav.scrolled {
+    background: rgba(15, 23, 42, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.glass-card {
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(13, 110, 253, 0.2);
+}
+
+/* Typography & Effects */
+.text-gradient {
+    background: linear-gradient(135deg, #0d6efd 0%, #6f42c1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Typewriter Heading */
+.typewriter-heading {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background-color: var(--primary-color);
+    animation: blink 1s infinite;
+    vertical-align: baseline;
+    height: 1em;
+    margin-left: 2px;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.glow-btn {
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+    transition: all 0.3s ease;
+}
+.glow-btn:hover {
+    box-shadow: 0 0 25px rgba(13, 110, 253, 0.7);
+    transform: translateY(-2px);
+}
+.hover-primary:hover {
+    color: var(--primary-color) !important;
+    transition: color 0.3s ease;
+}
+
+/* Profile Image Wrapper */
+.profile-img-wrapper {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 2px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+}
+.profile-img-wrapper img {
+    border-radius: 20px;
+    display: block;
+}
+
+/* Info Items */
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+.social-link {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+}
+.social-link.facebook {
+    background: rgba(24, 119, 242, 0.1);
+    border-color: rgba(24, 119, 242, 0.3);
+}
+.social-link.facebook:hover {
+    background: #1877f2;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(24, 119, 242, 0.4);
+}
+.social-link.instagram {
+    background: rgba(225, 48, 108, 0.1);
+    border-color: rgba(225, 48, 108, 0.3);
+}
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4);
+}
+.social-link.github {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.social-link.github:hover {
+    background: #ffffff;
+    color: #0f172a;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+.social-link.email {
+    background: rgba(13, 110, 253, 0.1);
+    border-color: rgba(13, 110, 253, 0.3);
+}
+.social-link.email:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+}
+
+/* Skill Progress Bars */
+.skill-progress {
+    width: 0%;
+    transition: width 1.5s ease-out;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Stat Cards */
+.stat-card {
+    transition: transform 0.3s ease;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+/* =========================================
+   LARGER CAROUSEL IMAGES
+========================================= */
+.carousel-image-large {
+    max-height: 550px;
+    width: 100%;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+}
+
+.carousel-item .col-md-10.col-lg-8 .glass-card {
+    padding: 2rem !important;
+}
+
+@media (max-width: 768px) {
+    .carousel-image-large {
+        max-height: 350px;
+    }
+}
+
+/* Carousel Customizations */
+.carousel-indicators [data-bs-target] {
+    background-color: var(--primary-color);
+    opacity: 0.4;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 6px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.carousel-indicators .active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1) grayscale(100);
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #6f42c1);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    box-shadow: 0 5px 20px rgba(13, 110, 253, 0.4);
+}
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(13, 110, 253, 0.6);
+}
+
+/* Repo Card Specifics */
+.repo-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.repo-card .mt-auto {
+    margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .glass-nav {
+        background: rgba(15, 23, 42, 0.98);
+    }
+    .display-3 {
+        font-size: 2.5rem;
+    }
+    .profile-img-wrapper {
+        max-width: 300px;
+    }
+}
+@media (max-width: 768px) {
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Active nav link */
+.nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Custom color for Tailwind icon */
+.text-cyan {
+    color: #06b6d4 !important;
+}
