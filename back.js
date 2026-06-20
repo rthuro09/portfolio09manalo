@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize counters
     initCounters();
 
-    // Initialize skill bars
+    // Initialize skill bars (if any exist)
     initSkillBars();
 });
 
@@ -60,7 +60,7 @@ function initCounters() {
                 const duration = 2000;
                 const step = target / (duration / 16);
                 let current = 0;
-
+                
                 const updateCounter = () => {
                     current += step;
                     if (current < target) {
@@ -84,6 +84,8 @@ function initCounters() {
 // ==========================================
 function initSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
+    if (skillBars.length === 0) return; // Exit if no skill bars exist
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -96,7 +98,7 @@ function initSkillBars() {
             }
         });
     }, { threshold: 0.5 });
-
+    
     skillBars.forEach(bar => observer.observe(bar));
 }
 
@@ -139,8 +141,8 @@ function scrollToTop() {
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    
     let current = '';
+    
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         if (window.scrollY >= sectionTop - 200) {
